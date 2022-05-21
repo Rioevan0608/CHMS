@@ -1,0 +1,35 @@
+GET http://localhost:5000/api/tribes/1
+
+###
+
+GET http://localhost:5000/api/tribes/
+
+###
+
+POST http://localhost:5000/api/tribes/
+Content-Type: application/json
+
+{
+   "tribes": "Gayo"
+}
+
+###
+
+PUT http://localhost:5000/api/tribes/2
+Content-Type: application/json
+
+{
+   "tribes": "Melayu"
+}
+
+###
+
+DELETE http://localhost:5000/api/tribes/3
+Content-Type: application/json
+
+{
+
+}
+
+###
+

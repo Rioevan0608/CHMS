@@ -1,0 +1,71 @@
+GET http://localhost:5000/api/employees/1
+
+###
+
+GET http://localhost:5000/api/employees/2
+
+###
+
+POST http://localhost:5000/api/employees/
+Content-Type: application/json
+
+{
+   "nik": "7890905679964",
+   "name": "Gabriela",
+   "place_birth": "Jakarta",
+   "date_birth": "2001-10-19T16:00:00.000Z",
+   "email": "gabriela@gmail.com",
+   "gender": "Women",
+   "blood_type": "O",
+   "address": "taman anggrek",
+   "rt": "008",
+   "rw": "005",
+   "village": "Mangga dua",
+   "districts": "Jakarta",
+   "religion": "Protestan",
+   "marital": "single",
+   "occupation": "Pengusaha",
+   "citizen": "indonesian",
+   "phone_number": "08978765654",
+   "phone": "0989878767",
+   "status": "Active"
+}
+
+###
+
+PUT http://localhost:5000/api/employees/2
+Content-Type: application/json
+
+{
+   "nik": "9848629849864",
+   "name": "Chika2",
+   "place_birth": "Serang2",
+   "date_birth": "2000-11-12T16:00:00.000Z",
+   "email": "chika@gmail.com",
+   "gender": "Women",
+   "blood_type": "a",
+   "address": "taman puri anggrek",
+   "rt": "007",
+   "rw": "004",
+   "village": "ciruas",
+   "districts": "banten",
+   "religion": "katolik",
+   "marital": "single",
+   "occupation": "karyawan",
+   "citizen": "indonesian",
+   "phone_number": "08124567874",
+   "phone": "0897882523",
+   "status": "Active"
+}
+
+###
+
+DELETE http://localhost:5000/api/employees/1
+Content-Type: application/json
+
+{
+
+}
+
+###
+

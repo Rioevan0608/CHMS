@@ -1,0 +1,36 @@
+GET http://localhost:5000/api/province
+
+###
+
+GET http://localhost:5000/api/province/2
+
+###
+
+POST http://localhost:5000/api/province/
+Content-Type: application/json
+
+{
+   "province": "Sulawesi Selatan"
+}
+
+###
+
+PUT http://localhost:5000/api/province/2
+Content-Type: application/json
+
+{
+     "province": "Jawa Tengah"
+
+}
+
+###
+
+DELETE http://localhost:5000/api/province/26
+Content-Type: application/json
+
+{
+
+}
+
+###
+
