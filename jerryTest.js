@@ -1,0 +1,1 @@
+Mencoba sesuatu yang baru
