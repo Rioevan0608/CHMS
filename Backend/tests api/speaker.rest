@@ -1,0 +1,71 @@
+GET http://localhost:5000/api/speaker/1
+
+###
+
+GET http://localhost:5000/api/speaker/2
+
+###
+
+POST http://localhost:5000/api/speaker/
+Content-Type: application/json
+
+{ 
+  "nik": "90897766543490",
+   "name": "Chika1",
+   "place_birth": "Serang1",
+   "date_birth": "2000-11-12T16:00:00.000Z",
+   "email": "salsa@gmail.com",
+   "gender": "Women",
+   "blood_type": "a",
+   "address": "taman puri anggrek",
+   "rt": "007",
+   "rw": "008",
+   "village": "ciruas",
+   "districts": "banten",
+   "religion": "katolik",
+   "marital": "single",
+   "occupation": "karyawan",
+   "citizen": "indonesian",
+   "phone_number": "08124567874",
+   "phone": "0897882523",
+   "status": "Active"
+}
+
+###
+
+PUT http://localhost:5000/api/speaker/2
+Content-Type: application/json
+
+{
+   "nik": "9848629849864",
+   "name": "Chika3",
+   "place_birth": "Serang3",
+   "date_birth": "2000-11-12T16:00:00.000Z",
+   "email": "chika@gmail.com",
+   "gender": "Women",
+   "blood_type": "a",
+   "address": "taman puri anggrek",
+   "rt": "007",
+   "rw": "004",
+   "village": "ciruas",
+   "districts": "banten",
+   "religion": "katolik",
+   "marital": "single",
+   "occupation": "karyawan",
+   "citizen": "indonesian",
+   "phone_number": "08124567874",
+   "phone": "0897882523",
+   "status": "Active"
+}
+
+###
+
+DELETE http://localhost:5000/api/speaker/
+Content-Type: application/json
+
+{
+
+}
+
+###
+

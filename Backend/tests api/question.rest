@@ -1,0 +1,36 @@
+GET http://localhost:5000/api/question
+
+###
+
+GET http://localhost:5000/api/question/2
+
+###
+
+POST http://localhost:5000/api/question/
+Content-Type: application/json
+
+{
+   "question": "siapa cinta pertama kamu",
+   "answer": "Dia yang membesarkan aku dari kecil"
+}
+
+###
+
+PUT http://localhost:5000/api/question/2
+Content-Type: application/json
+
+{
+     "answer": "hallo"
+}
+
+###
+
+DELETE http://localhost:5000/api/question/2
+Content-Type: application/json
+
+{
+
+}
+
+###
+
