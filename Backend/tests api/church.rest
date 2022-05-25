@@ -1,0 +1,41 @@
+GET http://localhost:5000/api/church/
+
+###
+
+GET http://localhost:5000/api/church/2
+
+###
+
+POST http://localhost:5000/api/church/
+Content-Type: application/json
+
+{
+   "id_church": "6789454",
+   "churchname": "GBI",
+   "address": "Jakarta",
+   "status": "Active"
+}
+
+###
+
+PUT http://localhost:5000/api/church/1
+Content-Type: application/json
+
+{
+   "id_church": "5367865",
+   "churchname": "GKI1",
+   "address": "Serang1",
+   "status": "Active"
+}
+
+###
+
+DELETE http://localhost:5000/api/church/1
+Content-Type: application/json
+
+{
+
+}
+
+###
+
