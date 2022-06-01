@@ -1,0 +1,41 @@
+GET http://localhost:5000/api/temp_purchase_details/
+
+###
+
+GET http://localhost:5000/api/temp_purchase_details/2
+
+###
+
+POST http://localhost:5000/api/temp_purchase_details/
+Content-Type: application/json
+
+{
+   "id_temp_purchase_details": "6789454",
+   "temp_purchase_detailsname": "GBI",
+   "address": "Jakarta",
+   "status": "Active"
+}
+
+###
+
+PUT http://localhost:5000/api/temp_purchase_details/1
+Content-Type: application/json
+
+{
+   "id_temp_purchase_details": "5367865",
+   "temp_purchase_detailsname": "GKI1",
+   "address": "Serang1",
+   "status": "Active"
+}
+
+###
+
+DELETE http://localhost:5000/api/temp_purchase_details/1
+Content-Type: application/json
+
+{
+
+}
+
+###
+

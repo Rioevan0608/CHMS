@@ -66,6 +66,18 @@ const questionRoutes = require('./routes/question.routes.js');
 // using as middleware
 app.use('/api/question', questionRoutes)
 
+// Require church routes
+const churchRoutes = require('./routes/church.routes.js');
+
+// using as middleware
+app.use('/api/church', churchRoutes)
+
+// Require temp_purchase_details routes
+const temp_purchase_detailsRoutes = require('./routes/temp_purchase_details.routes.js');
+
+// using as middleware
+app.use('/api/temp_purchase_details', temp_purchase_detailsRoutes)
+
 // listen for requests
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);

@@ -1,24 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Grid, Button } from "@mui/material";
-import FormDialog from "./modal/ChurchModal";
+import FormDialog from "./modal/Temp_Purchase_DetailsModal";
 import { DataGrid } from "@mui/x-data-grid";
 
-const initialValue = { 
-    name: "", 
-    idchurch: "",
-    churchname: "",
-    status: true,
-};
+const initialValue = { userid: "", no_transaction: "", item_id: "", item_name: "", quntity: "", price: "",  discount: "", dob: "" };
 
-function Church() {
+function TransactionForm() {
     const [gridApi, setGridApi] = useState(null);
     const [open, setOpen] = React.useState(false);
     const [tableData, setTableData] = useState(null);
     const [formData, setFormData] = useState(initialValue);
-
-    function handleActiveValue(e) {
-        setFormData({ ...formData, status: e });
-    }
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -29,14 +20,16 @@ function Church() {
         setFormData(initialValue);
     };
 
-   const url = `http://localhost:5000/api/church/`;
-    //  const url = `http://frederickdumalawoffice.id/api/church/`;
+    const url = `http://localhost:5000/api/Temp_Purchase_Details/`;
+    // const url = `http://frederickdumalawoffice.id/api/transaction/`;
     const columnDefs = [
-        { headerName: "Id", field: "id" },
-        { headerName: "IdChurch", field: "id_church" },
-        { headerName: "ChurchName", field: "churchname" },
-        { headerName: "Address", field: "address" },
-        { headerName: "Status", field: "status" },
+        { headerName: "UserId", field: "userid" },
+        { headerName: "No_Transaction", field: "no_transaction" },
+        { headerName: "Item_Id", field: "item_id" },
+        { headerName: "Item_Name", field: "item_name" },
+        { headerName: "Quntity", field: "quntity" },
+        { headerName: "Price", field: "price" },
+        { headerName: "Discount", field: "discount" },
         {
             headerName: "Actions",
             field: "id",
@@ -54,17 +47,17 @@ function Church() {
     ];
 
     const columns = [
-        { headerName: "Id", field: "id", type: "number", width: 50 },
-        { headerName: "IdChurch", field: "id_church", type: "number", width: 150 },
-        { headerName: "ChurchName", field: "churchname", type: "string", width: 150 },
-        { headerName: "Address", field: "address", width: 200 },
-        { headerName: "Status", field: "status", width: 110, valueGetter: (params) => (params.row.status == 1 ? "Active" : "Not Active") },
+        { headerName: "UserId", field: "userid", type: "number", width: 100 },
+        { headerName: "No_Transaction", field: "no_transaction", width: 200 },
+        { headerName: "Item_Id", field: "item_id", width: 200 },
+        { headerName: "Item_Name", field: "item_name", width: 200 },
+        { headerName: "Quntity", field: "quntity", width: 200 },
+        { headerName: "Price", field: "price", width: 200 },
+        { headerName: "Discount", field: "discount", width: 200 },
         {
             field: "action",
             headerName: "Actions",
             sortable: false,
-            width: 170,
-            headerAlign:"center",
             renderCell: (params) => {
                 const onClick = (e) => {
                     e.stopPropagation(); // don't select this row after clicking
@@ -78,6 +71,7 @@ function Church() {
 
                     setFormData(thisRow, null, 4);
                     handleClickOpen();
+
                     // return alert(JSON.stringify(thisRow, null, 4));
                 };
 
@@ -87,13 +81,13 @@ function Church() {
         },
     ];
 
-    // calling getChurch function for first time
+    // calling getUsers function for first time
     useEffect(() => {
-        getChurch();
+        gettransaction();
     }, []);
 
     //fetching user data from server
-    const getChurch = () => {
+    const gettransaction = () => {
         fetch(url)
             .then((resp) => resp.json())
             .then((resp) => setTableData(resp));
@@ -122,7 +116,7 @@ function Church() {
         if (confirm) {
             fetch(url + `/${id}`, { method: "DELETE" })
                 .then((resp) => resp.json())
-                .then((resp) => getChurch());
+                .then((resp) => gettransaction());
         }
     };
 
@@ -141,7 +135,7 @@ function Church() {
                     .then((resp) => resp.json())
                     .then((resp) => {
                         handleClose();
-                        getChurch();
+                        gettransaction();
                     });
         } else {
             // adding new user
@@ -155,7 +149,7 @@ function Church() {
                 .then((resp) => resp.json())
                 .then((resp) => {
                     handleClose();
-                    getChurch();
+                    gettransaction();
                 });
         }
     };
@@ -169,10 +163,10 @@ function Church() {
 
     return (
         <div className="App">
-            <h1 align="center">Church Form</h1>
+            <h1 align="center">Transaction Setup</h1>
             <Grid align="right">
                 <Button variant="contained" color="primary" onClick={handleClickOpen}>
-                    Create New Church
+                    Add Transaction
                 </Button>
             </Grid>
             <div className="ag-theme-alpine-dark" style={{ height: "400px" }}>
@@ -183,13 +177,7 @@ function Church() {
                     // disableColumnMenu
                 />
             </div>
-            <FormDialog open={open} 
-            handleClose={handleClose} 
-            data={formData} 
-            onChange={onChange}
-            handleFormSubmit={handleFormSubmit} 
-            handleActiveValue={handleActiveValue}
-            />
+            <FormDialog open={open} handleClose={handleClose} data={formData} onChange={onChange} handleFormSubmit={handleFormSubmit} />
         </div>
     );
 }
@@ -198,4 +186,4 @@ const comparisonFn = function (prevProps, nextProps) {
     return prevProps.location.pathname === nextProps.location.pathname;
 };
 
-export default React.memo(Church, comparisonFn);
+export default React.memo(TransactionForm, comparisonFn);

@@ -37,6 +37,8 @@ import Province from './pages/Province';
 import Occupation from './pages/Occupation';
 import Tribes from './pages/Tribes';
 import Question from './pages/Question';
+import Church from './pages/Church';
+import Temp_Purchase_Details from './pages/Temp_Purchase_Details';
 
 import PrimeReact from 'primereact/api';
 import { Tooltip } from 'primereact/tooltip';
@@ -167,8 +169,8 @@ const App = () => {
                 label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/'
             }]
         },
-       
-      
+
+
         {
             label: 'Pages', icon: 'pi pi-fw pi-clone',
             items: [
@@ -180,10 +182,12 @@ const App = () => {
                 { label: 'Occupation', icon: 'pi pi-fw pi-circle-off', to: '/Occupation' },
                 { label: 'Tribes', icon: 'pi pi-fw pi-circle-off', to: '/Tribes' },
                 { label: 'Question', icon: 'pi pi-fw pi-circle-off', to: '/Question' },
+                { label: 'Church', icon: 'pi pi-fw pi-circle-off', to: '/Church' },
+                { label: 'Temp_Purchase_Details', icon: 'pi pi-fw pi-circle-off', to: '/Temp_Purchase_Details' },
             ]
         },
-     
-     
+
+
     ];
 
     const addClass = (element, className) => {
@@ -251,6 +255,8 @@ const App = () => {
                     <Route path="/Occupation" component={Occupation} />
                     <Route path="/Tribes" component={Tribes} />
                     <Route path="/Question" component={Question} />
+                    <Route path="/Church" component={Church} />
+                    <Route path="/Temp_Purchase_Details" component={Temp_Purchase_Details} />
                     <Route path="/documentation" component={Documentation} />
                 </div>
 
