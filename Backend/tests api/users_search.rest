@@ -1,0 +1,54 @@
+GET http://localhost:5000/api/Users_search
+
+###
+
+GET http://localhost:5000/api/Users_search/2
+
+###
+
+POST http://localhost:5000/api/Users_search/
+Content-Type: application/json
+
+{
+   "firstname": "Rio",
+   "lastname": "Evan",
+   "email": "rivanpa@gmail.com",
+   "placeofbirth": "Banten",
+   "birthdate": "2000-12-12T17:00:00.00Z",
+   "country": "Indonesia",
+   "current_location": "Banten",
+   "timezone": "12",
+   "phone": "0897882523",
+   "status": "Active"
+}
+
+###
+
+PUT http://localhost:5000/api/Users_search/26
+Content-Type: application/json
+
+{
+   "firstname": "Rio2",
+   "lastname": "Evan2",
+   "email": "rivanpa2@gmail.com",
+   "placeofbirth": "Banten2",
+   "birthdate": "2000-12-12T17:00:00.00Z",
+   "country": "Indonesia2",
+   "current_location": "Banten2",
+   "timezone": 12,
+   "phone": "0897882523",
+   "status": "Active2"
+}
+
+###
+
+DELETE http://localhost:5000/api/Users_search/26
+Content-Type: application/json
+
+{
+    "firstname":"jerryns",
+    "lastname": "sibarani"
+}
+
+###
+

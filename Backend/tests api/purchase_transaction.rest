@@ -1,0 +1,19 @@
+GET http://localhost:5000/api/purchase_transaction
+
+###
+
+GET http://localhost:5000/api/purchase_transaction/2
+
+###
+
+POST http://localhost:5000/api/purchase_transaction/
+Content-Type: application/json
+
+{
+   "userid": "27",
+   "no_transaction": "abc001",
+   "PIC": "yantox",
+   "transaction_date": "2022-12-12"
+}
+
+###
