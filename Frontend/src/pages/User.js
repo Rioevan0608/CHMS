@@ -3,13 +3,16 @@ import { Grid, Button } from "@mui/material";
 import FormDialog from "./modal/UserModal";
 import { DataGrid } from "@mui/x-data-grid";
 
-const initialValue = { name: "", email: "", phone: "", dob: "" };
+const initialValue = { name: "", email: "", phone: "", dob: "", status: true, };
 
 function UserForm() {
     const [gridApi, setGridApi] = useState(null);
     const [open, setOpen] = React.useState(false);
     const [tableData, setTableData] = useState(null);
     const [formData, setFormData] = useState(initialValue);
+    function handleActiveValue(e) {
+        setFormData({ ...formData, status: e });
+    }
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -26,12 +29,12 @@ function UserForm() {
         { headerName: "ID", field: "id" },
         { headerName: "Firstname", field: "firstname" },
         { headerName: "Lastname", field: "lastname" },
-        { headerName: "email", field: "email" },
-        { headerName: "Placeofbirth", field: "placeofbirth" },
-        { headerName: "Birthdate", field: "birthdate" },
+        { headerName: "Email", field: "email" },
+        { headerName: "PlaceOfBirth", field: "placeofbirth" },
+        { headerName: "BirthDate", field: "birthdate" },
         { headerName: "Country", field: "country" },
         { headerName: "Current_location", field: "current_location" },
-        { headerName: "timezone", field: "timezone" },            
+        { headerName: "Timezone", field: "timezone" },            
         { headerName: "Phone", field: "phone" },
         { headerName: "Status", field: "status" },
         {
@@ -54,18 +57,20 @@ function UserForm() {
         { headerName: "ID", field: "id", type: "number", width: 100 },
         { headerName: "Firstname", field: "firstname", type: "string", width: 150 },
         { headerName: "Lastname", field: "lastname", type: "string", width: 200 },
-        { headerName: "email", field: "email", type: "string", width: 150 },
+        { headerName: "Email", field: "email", type: "string", width: 150 },
         { headerName: "Placeofbirth", field: "placeofbirth", type: "string", width: 150 },
         { headerName: "Birthdate", field: "birthdate", width: 100 },
         { headerName: "Country", field: "country", width: 150 },
         { headerName: "Current_location", field: "current_location", width: 150 },
-        { headerName: "timezone", field: "timezone", width: 100 },
+        { headerName: "Timezone", field: "timezone", width: 100 },
         { headerName: "Phone", field: "phone", width: 100 },
-        { headerName: "Status", field: "status", width: 150 },
+        { headerName: "Status", field: "status", width: 120, valueGetter: (params) => (params.row.status == 1 ? "Active" : "Not Active") },
         {
             field: "action",
             headerName: "Actions",
             sortable: false,
+            width: 170,
+            headerAlign: "center",
             renderCell: (params) => {
                 const onClick = (e) => {
                     e.stopPropagation(); // don't select this row after clicking
@@ -84,7 +89,14 @@ function UserForm() {
                 };
 
                 // return <Button onClick={onClick} color="success" variant="outlined">Edit</Button>;
-                return <Button onClick={onClick}>Edit</Button>;
+                return (
+                <>
+                <Button onClick={onClick}>Edit</Button>
+                <Button color="primary" onClick={() => handleDelete(params.id)}>
+                        Delete
+                    </Button>
+                    </>
+                );
             },
         },
     ];
@@ -120,7 +132,7 @@ function UserForm() {
     //deleting a user
     const handleDelete = (id) => {
         alert("Nilainya-> " + id);
-        const confirm = window.confirm("Are you sure, you want to delete this row", id);
+        const confirm = window.confirm("Are you sure, you want to delete this row: " + id, id);
         if (confirm) {
             fetch(url + `/${id}`, { method: "DELETE" })
                 .then((resp) => resp.json())
@@ -185,7 +197,12 @@ function UserForm() {
                     // disableColumnMenu
                 />
             </div>
-            <FormDialog open={open} handleClose={handleClose} data={formData} onChange={onChange} handleFormSubmit={handleFormSubmit} />
+            <FormDialog open={open} 
+            handleClose={handleClose} 
+            data={formData} 
+            onChange={onChange} 
+            handleFormSubmit={handleFormSubmit} 
+            handleActiveValue={handleActiveValue}/>
         </div>
     );
 }
